@@ -20,7 +20,7 @@ struct Home : View {
     @State var show = false
     
     var body: some View {
-        //
+        // ใช้งาน NavigationView
         NavigationView {
             ZStack {
                 NavigationLink(destination: SignUp(show: self.$show),isActive: self.$show) {
