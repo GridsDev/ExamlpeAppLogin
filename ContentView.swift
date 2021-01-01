@@ -1,4 +1,6 @@
 import SwiftUI
+// ถ้านำไปใช้กับ Firebase ให้เพิ่มบันทัดนี้
+// import Firebase
 
 struct ContentView: View {
     var body: some View {
@@ -148,7 +150,20 @@ struct SignIn : View {
     // Func Reset
     func reset() {
         if self.email != "" {
-            
+            // ถ้านำไปใช้กับ Firebase ให้เพิ่มบันทัดนี้
+            /* 
+            Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in                 
+                if err != nil {                      
+                    self.error = err!.localizedDescription
+                    self.alert.toggle()
+                    return
+                }
+                print("success")
+                UserDefaults.standard.set(true, forKey: "status")
+                NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+            }
+            */
+            // ------------------------------------------
         } else {
             self.error = "Email Id is empty"
             self.alert.toggle()
@@ -234,7 +249,7 @@ struct SignUp : View {
                         .padding(.top, 25)
                         
                         // Button Register
-                        Button(action: {}) {
+                        Button(action: {self.register()}) {
                             Text("Register")
                                 .foregroundColor(.white)
                                 .padding(.vertical)
@@ -260,11 +275,24 @@ struct SignUp : View {
         }
         .navigationBarBackButtonHidden(true)
     }
-    // Func
+    // Func register
     func register() {
         if self.email != "" {
             if self.pass == self.repass {
-                
+                // ถ้านำไปใช้กับ Firebase ให้เพิ่มบันทัดนี้
+                /* 
+                Auth.auth().createUser(withEmail: self.email, password: self.pass) { (res, err) in                      
+                    if err != nil {                          
+                        self.error = err!.localizedDescription
+                        self.alert.toggle()
+                        return
+                    }                      
+                    print("success")                      
+                    UserDefaults.standard.set(true, forKey: "status")
+                    NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                }
+                */
+                // ------------------------------------------
             } else {
                 self.error = "Password Mismatch"
                 self.alert.toggle()
