@@ -140,16 +140,6 @@ struct SignIn : View {
     // Func verify
     func verify() {
         if self.email != "" && self.pass != "" {
-            
-        } else {
-            self.error = "Please fill all the contents properly"
-            self.alert.toggle()
-        }
-    }
-        
-    // Func Reset
-    func reset() {
-        if self.email != "" {
             // ถ้านำไปใช้กับ Firebase ให้เพิ่มบันทัดนี้
             /* 
             Auth.auth().signIn(withEmail: self.email, password: self.pass) { (res, err) in                 
@@ -161,6 +151,28 @@ struct SignIn : View {
                 print("success")
                 UserDefaults.standard.set(true, forKey: "status")
                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+            }
+            */
+            // ------------------------------------------            
+        } else {
+            self.error = "Please fill all the contents properly"
+            self.alert.toggle()
+        }
+    }
+        
+    // Func Reset
+    func reset() {
+        if self.email != "" {
+            // ถ้านำไปใช้กับ Firebase ให้เพิ่มบันทัดนี้
+            /* 
+            Auth.auth().sendPasswordReset(withEmail: self.email) { (err) in
+                if err != nil {
+                    self.error = err!.localizedDescription
+                    self.alert.toggle()
+                    return
+                }
+                self.error = "RESET"
+                self.alert.toggle()
             }
             */
             // ------------------------------------------
